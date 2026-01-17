@@ -18,8 +18,8 @@ stages:
         
       - task: PublishPipelineArtifact@1
         inputs:
-          targetPath: '$(System.DefaultWorkingDirectory)/JavaLoginPracticeApp-main/target/JavaLoginShowcase-1.0.0.war'
-          artifact: 'target'
+          targetPath: '$(System.DefaultWorkingDirectory)/JavaLoginPracticeApp-main'
+          artifact: 'drop'
           publishLocation: 'pipeline'
 
 - stage: deploy
