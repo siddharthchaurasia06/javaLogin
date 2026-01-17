@@ -18,7 +18,7 @@ stages:
         
       - task: PublishPipelineArtifact@1
         inputs:
-          targetPath: '$(Pipeline.Workspace)'
+          targetPath: '$(System.DefaultWorkingDirectory)/JavaLoginPracticeApp-main/target'
           artifact: 'target'
           publishLocation: 'pipeline'
 
