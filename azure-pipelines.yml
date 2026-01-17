@@ -18,7 +18,7 @@ stages:
         
       - task: PublishPipelineArtifact@1
         inputs:
-          targetPath: '$(System.DefaultWorkingDirectory)/JavaLoginPracticeApp-main/target'
+          targetPath: '$(System.DefaultWorkingDirectory)/JavaLoginPracticeApp-main/targe0t/JavaLoginShowcase-1.0.0.war'
           artifact: 'target'
           publishLocation: 'pipeline'
 
@@ -39,11 +39,12 @@ stages:
               buildType: 'current'
               artifactName: 'target'
               targetPath: '$(Pipeline.Workspace)'
+          
 
           - task: Bash@3
             inputs:
               targetType: 'inline'
-              script: 'sudo cp -r $(Pipeline.Workspace)/JavaLoginShowcase-1.0.0.war  /var/lib/tomcat10/webapps'
+              script: 'sudo cp -r $(Pipeline.Workspace)/  /var/lib/tomcat10/webapps'
 
           
 
