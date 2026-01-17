@@ -22,7 +22,22 @@ stages:
           artifact: 'target'
           publishLocation: 'pipeline'
 
-    
-    
+- stage: deploy
+  displayName: deployment
+  jobs:
+  - deployment: downloadArtifect
+    displayName: download Artifect
+    environment:
+      name: my env
+      resourceType: virtualMachine
+    strategy:
+      runOnce:
+       deploy:
+          steps:
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              buildType: 'current'
+              artifactName: 'target'
+              targetPath: '$(Pipeline.Workspace)'
 
 
