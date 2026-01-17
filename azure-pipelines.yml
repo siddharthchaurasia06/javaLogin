@@ -10,11 +10,11 @@ stages:
   - job: instalingDependencies
     displayName: installing Dependencies
     steps:
-    - task: Bash@3
-      inputs:
-        targetType: 'inline'
-        script: 'mvn clean package'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/JavaLoginPracticeApp-main'
+      - task: PowerShell@2
+        inputs:
+          targetType: 'inline'
+          script: 'mvn clean package'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/JavaLoginPracticeApp-main'
 
     
     
