@@ -1,10 +1,22 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
-pool: default
+pool: Default
+
+stages:
+- stage: buildingArtifact
+  displayName: building Artifact
+  jobs:
+  - job: instalingDependencies
+    displayName: installing Dependencies
+    steps:
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: 'mvn clean package'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/JavaLoginPracticeApp-main'
+
+    
+    
+
 
