@@ -15,6 +15,12 @@ stages:
           targetType: 'inline'
           script: 'mvn clean package'
           workingDirectory: '$(System.DefaultWorkingDirectory)/JavaLoginPracticeApp-main'
+        
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: '$(Pipeline.Workspace)'
+          artifact: 'target'
+          publishLocation: 'pipeline'
 
     
     
