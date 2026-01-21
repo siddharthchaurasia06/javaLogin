@@ -16,29 +16,35 @@ stages:
           script: 'mvn clean package'
           workingDirectory: '$(System.DefaultWorkingDirectory)/JavaLoginPracticeApp-main'
         
+      # - task: PublishPipelineArtifact@1
+      #   inputs:
+      #     targetPath: '$(System.DefaultWorkingDirectory)/JavaLoginPracticeApp-main/target'
+      #     artifact: 'target'
+      #     publishLocation: 'pipeline'
+        
       - task: PublishPipelineArtifact@1
         inputs:
-          targetPath: '$(System.DefaultWorkingDirectory)/JavaLoginPracticeApp-main/target'
-          artifact: 'target'
+          targetPath: '$(Pipeline.Workspace)\s\JavaLoginPracticeApp-main\target'
+          artifact: 'build'
           publishLocation: 'pipeline'
 
-- stage: deploy
-  displayName: deployment
-  jobs:
-  - deployment: downloadArtifect
-    displayName: download Artifect
-    environment:
-      name: sidEnv
-      resourceType: virtualMachine
-    strategy:
-      runOnce:
-       deploy:
-          steps:
-          - task: DownloadPipelineArtifact@2
-            inputs:
-              buildType: 'current'
-              artifactName: 'target'
-              targetPath: '$(Pipeline.Workspace)'
+# - stage: deploy
+#   displayName: deployment
+#   jobs:
+#   - deployment: downloadArtifect
+#     displayName: download Artifect
+#     environment:
+#       name: sidEnv
+#       resourceType: virtualMachine
+#     strategy:
+#       runOnce:
+#        deploy:
+#           steps:
+#           - task: DownloadPipelineArtifact@2
+#             inputs:
+#               buildType: 'current'
+#               artifactName: 'target'
+#               targetPath: '$(Pipeline.Workspace)'
           
 
           # - task: Bash@3
