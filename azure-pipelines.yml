@@ -28,23 +28,23 @@ stages:
           artifact: 'build'
           publishLocation: 'pipeline'
 
-# - stage: deploy
-#   displayName: deployment
-#   jobs:
-#   - deployment: downloadArtifect
-#     displayName: download Artifect
-#     environment:
-#       name: sidEnv
-#       resourceType: virtualMachine
-#     strategy:
-#       runOnce:
-#        deploy:
-#           steps:
-#           - task: DownloadPipelineArtifact@2
-#             inputs:
-#               buildType: 'current'
-#               artifactName: 'target'
-#               targetPath: '$(Pipeline.Workspace)'
+- stage: deploy
+  displayName: deployment
+  jobs:
+  - deployment: downloadArtifect
+    displayName: download Artifect
+    environment:
+      name: sidEnv
+      resourceType: virtualMachine
+    strategy:
+      runOnce:
+       deploy:
+          steps:
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              buildType: 'current'
+              artifactName: 'build'
+              targetPath: '$(Pipeline.Workspace)\s\JavaLoginPracticeApp-main\target'
           
 
           # - task: Bash@3
