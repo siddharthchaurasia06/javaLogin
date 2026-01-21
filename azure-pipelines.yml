@@ -28,7 +28,7 @@ stages:
   - deployment: downloadArtifect
     displayName: download Artifect
     environment:
-      name: myEnv
+      name: sidEnv
       resourceType: virtualMachine
     strategy:
       runOnce:
